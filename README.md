@@ -10,6 +10,7 @@ C:\Users\Your_user_name\path_to_pem_file> ssh -i <your_pem_file.pem> ec2-user@<j
 ```
 ec2-user@xx.xx.xx.xx $ docker exec $(docker ps -a -q) cat /var/jenkins_home/secrets/initialAdminPassword
 ```
+```
 djhbhjkdskfksdghvsjdvgjsvfd
-
+````
 copy above secret text and paste in the jenkins application
