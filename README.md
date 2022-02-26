@@ -5,7 +5,7 @@ Performing DevOps continues integeration and continues deployment (CI/CD) by set
 #### 1. Clone the repo
 
 ```
-https://github.com/phanison898/terraform-aws-devops-project.git
+git clone https://github.com/phanison898/terraform-aws-devops-project.git
 ```
 
 #### 2. Create secrets.tfvars file
