@@ -78,3 +78,34 @@ Run below steps sequencially
 ```
 tomcatup
 ```
+
+- Launch Tomcat server in browser using below url
+
+```
+    http://<instance_public_ip>:8080
+```
+
+#### 5. Launch Jenkins EC2-Instance using SSH
+
+- Connect to Jenkins EC2-Instance
+
+```
+    ssh -i <path/to/key.pem> ec2-user@<aws_instance_public_ip>
+```
+
+- Run below command to get jenkins initial setup password
+
+```
+    cat docker exec $(docker ps -a -q) cat /var/jenkins_home/secrets/initialAdminPassword
+
+    # you will a key something like below
+    hdjfhgyuigdcbjhbshjgvdfysvbgxc
+
+    # use this key while setting up jenkins
+```
+
+- Launch Jenkins webapp using below url
+
+```
+    http://<instance_public_ip>:8080
+```
