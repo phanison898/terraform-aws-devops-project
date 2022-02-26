@@ -5,7 +5,7 @@ Performing DevOps continues integeration and continues deployment (CI/CD) by set
 #### 1. Clone the repo
 
 ```
-https://github.com/phanison898/terraform-aws-devops-project.git
+git clone https://github.com/phanison898/terraform-aws-devops-project.git
 ```
 
 #### 2. Create secrets.tfvars file
@@ -44,7 +44,9 @@ Run below steps sequencially
 - Edit tomcat-users.xml file by navigating to below directory
 
 ```
-    vim /opt/tomcat/conf/tomcat-users.xml
+    sudo su -
+    cd /
+    vim opt/tomcat/conf/tomcat-users.xml
 ```
 
 - Add below lines
@@ -62,6 +64,8 @@ Run below steps sequencially
 - Search for below files
 
 ```
+    cd opt/tomcat/conf/
+
     find / -name context.xml
 
     #you will see below files
@@ -96,7 +100,8 @@ tomcatup
 - Run below command to get jenkins initial setup password
 
 ```
-    cat docker exec $(docker ps -a -q) cat /var/jenkins_home/secrets/initialAdminPassword
+    sudo su -
+    docker exec $(docker ps -a -q) cat /var/jenkins_home/secrets/initialAdminPassword
 
     # you will a key something like below
     hdjfhgyuigdcbjhbshjgvdfysvbgxc
