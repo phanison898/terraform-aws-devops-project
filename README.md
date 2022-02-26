@@ -32,3 +32,49 @@ Run below steps sequencially
 3. terraform plan -var-file="secrets.tfvars"
 4. terraform apply -var-file="secrets.tfvars"
 ```
+
+#### 4. Launch Tomcat EC2-Instance using SSH
+
+- Connect to EC2-Instance
+
+```
+    ssh -i <path/to/key.pem> ec2-user@<aws_instance_public_ip>
+```
+
+- Edit tomcat-users.xml file by navigating to below directory
+
+```
+    vim /opt/tomcat/conf/tomcat-users.xml
+```
+
+- Add below lines
+
+```
+     <role rolename="manager-gui"/>
+     <role rolename="manager-script"/>
+     <role rolename="manager-jmx"/>
+     <role rolename="manager-status"/>
+     <user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+     <user username="deployer" password="deployer" roles="manager-script"/>
+     <user username="tomcat" password="s3cret" roles="manager-gui"/>
+```
+
+- Search for below files
+
+```
+    find / -name context.xml
+
+    #you will see below files
+
+    /opt/tomcat/webapps/host-manager/META-INF/context.xml
+    /opt/tomcat/webapps/manager/META-INF/context.xml
+
+    #Go into edit mode using vim and comment `Value className` tag
+
+```
+
+- Restart the Tomcat server
+
+```
+tomcatup
+```
