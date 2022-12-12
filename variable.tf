@@ -20,3 +20,8 @@ variable "instance_type" {
 variable "ami" {
 
 }
+
+variable "number_of_instances" {
+  default = 2
+  type    = number
+}
